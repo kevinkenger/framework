@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Recruiting.com Framework</title>
+    <link rel="stylesheet" href="//codepen.io/assets/reset/normalize.css">
+    <style id="myStyles">
+
+        /* Imports */
+    /* Sass Variables */
+    /* ELEMENTS */
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-size: 18px;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 10px 0;
+      overflow: hidden;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      width: 25%;
+      min-width: 250px;
+      top: 0;
+      right: -100%;
+    }
+
+    .mobile-nav-trigger {
+      float: right;
+      display: none;
+    }
+
+    .logo {
+      background: transparent url();
+      background-size: contain;
+      width: 200px;
+      height: 70px;
+      float: left;
+    }
+
+    .navigation {
+      float: right;
+      margin-top: 15px;
+      list-style: none;
+    }
+
+    .navigation li {
+      margin: 0 15px;
+      display: inline-block;
+    }
+
+    .navigation li a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    header {
+      background: url();
+      background-size: cover;
+      padding: 13.5vw 0;
+      display: table;
+      width: 100%;
+    }
+
+    .header-content {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .slider {
+      width: 100%;
+      height: 27.5vw;
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider.max-width {
+      max-width: 1100px;
+      max-height: 600px;
+      margin: 0 auto;
+    }
+
+    .slider ul {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 300%;
+    }
+
+    .slider li {
+      width: 33.333%;
+      height: 100%;
+      display: inline-block;
+      float: left;
+      -webkit-transition: transform .3s ease;
+      -moz-transition: transform .3s ease;
+      -o-transition: transform .3s ease;
+      transition: transform .3s ease;
+    }
+
+    .slider span[class^="arrow"] {
+      position: absolute;
+      height: 50px;
+      top: calc(50% - 25px);
+      cursor: pointer;
+    }
+
+    .slider .arrow-left {
+      left: 2.5%;
+    }
+
+    .slider .arrow-right {
+      right: 2.5%;
+    }
+
+    .slider.arrows span[class^="arrow"]:before {
+      content: "";
+      min-height: 50px;
+      min-width: 50px;
+      display: inline-block;
+    }
+
+    .slider.arrows .arrow-left:before {
+      background: url("img/icons/left-arrow.png") center no-repeat;
+      background-size: contain;
+    }
+
+    .slider.arrows .arrow-right:before {
+      background: url("img/icons/right-arrow.png") center no-repeat;
+      background-size: contain;
+    }
+
+    .slider-nav {
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .slider-nav .nav-dot {
+      width: 10px;
+      height: 10px;
+      background: transparent;
+      border: 2px solid #009ED5;
+      border-radius: 100%;
+      display: inline-block;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .slider-nav .nav-dot:last-child {
+      margin-right: 0;
+    }
+
+    .slider-nav .nav-dot.active {
+      background: #009ED5;
+    }
+
+    .accordion {
+      list-style: none;
+    }
+
+    .accordion li > a {
+      display: block;
+      background: #009ED5;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 1.5%;
+      box-sizing: border-box;
+    }
+
+    .accordion li.open > a {
+      opacity: .65;
+    }
+
+    .accordion li > a:after {
+      content: '';
+      width: 25px;
+      height: 25px;
+      background: url("img/icons/plus.png") center no-repeat;
+      background-size: contain;
+      float: right;
+    }
+
+    .accordion li.open > a:after {
+      background: url("img/icons/minus.png") center no-repeat;
+      background-size: contain;
+    }
+
+    .accordion-content-container {
+      height: 0;
+      overflow: hidden;
+      transition: height .3s ease;
+    }
+
+    .accordion.horizontal li {
+      float: left;
+      height: 200px;
+      transition: width .3s ease;
+    }
+
+    .accordion.horizontal li > a {
+      float: left;
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .accordion.horizontal li.open > a {
+      width: 25%;
+    }
+
+    .accordion.horizontal .accordion-content-container {
+      float: left;
+      width: 0;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .accordion .accordion-content-container p {
+      height: auto;
+      margin: 0;
+      padding: 1.5%;
+    }
+
+    .accordion.horizontal li.open > .accordion-content-container {
+      width: 75%;
+    }
+
+    /* TYPOGRAPHY */
+    h1, .h1-style,
+    h2, .h2-style,
+    h3, .h3-style,
+    h4, .h4-style {
+      color: #2b2b2b;
+    }
+
+    h1,
+    .h1-style {
+      font-size: 3.157em;
+    }
+
+    h2,
+    .h2-style {
+      font-size: 2.369em;
+    }
+
+    h3,
+    .h3-style {
+      font-size: 1.777em;
+    }
+
+    h4,
+    .h4-style {
+      font-size: 1.333em;
+    }
+
+    p {
+      color: #2b2b2b;
+    }
+
+    a {
+      color: #009ED5;
+      text-decoration: none;
+      -webkit-transition: all .25s ease;
+      -moz-transition: all .25s ease;
+      -o-transition: all .25s ease;
+      transition: all .25s ease;
+    }
+
+    a:hover {
+      opacity: .65;
+    }
+
+    a.active-link {
+      color: #848484;
+      cursor: default;
+    }
+
+    a.active-link:hover {
+      color: #2b2b2b;
+    }
+
+    p a {
+      color: currentColor;
+      border-bottom: 1px solid #d1d1d1;
+    }
+
+    p a:hover {
+      color: currentColor;
+      opacity: 1;
+      border-color: #2b2b2b;
+    }
+
+    /* LINK EFFECTS */
+    [hover-effect] li a {
+      -webkit-transition: all .25s ease;
+      -moz-transition: all .25s ease;
+      -o-transition: all .25s ease;
+      transition: all .25s ease;
+    }
+
+    [hover-effect^="border-bottom"] li a {
+      border-bottom: 2px solid transparent;
+    }
+
+    [hover-effect="border-bottom-from-top"] li a {
+      padding-bottom: 0;
+    }
+
+    [hover-effect="border-bottom-from-top"] li a:hover {
+      padding-bottom: 3px;
+      border-color: currentColor;
+    }
+
+    [hover-effect="border-bottom-from-bottom"] li a {
+      padding-bottom: 5px;
+    }
+
+    [hover-effect="border-bottom-from-bottom"] li a:hover {
+      padding-bottom: 0;
+      border-color: currentColor;
+    }
+
+    /* UTILITIES */
+    .srt {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      border: 0;
+      clip: rect(0 0 0 0);
+    }
+
+    /* GRID SYSTEM */
+    .wrapper {
+      padding: 25px 0;
+      overflow: hidden;
+    }
+
+    .inner-container {
+      width: 80%;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .row {
+      clear: both;
+    }
+
+    [class^="col-"] {
+      box-sizing: border-box;
+      margin: 5px 1.5% 5px 0;
+      float: left;
+    }
+
+    [class^="col-"]:last-child {
+      margin-right: 0;
+      float: right;
+    }
+
+    .col-1 {
+      width: 100%;
+    }
+
+    .col-1.centered-90 {
+      width: 90%;
+      margin-right: 5%;
+    }
+
+    .col-1.centered-80 {
+      width: 80%;
+      margin-right: 10%;
+    }
+
+    .col-1.centered-70 {
+      width: 70%;
+      margin-right: 15%;
+    }
+
+    .col-1.centered-60 {
+      width: 60%;
+      margin-right: 20%;
+    }
+
+    .col-1.centered-50 {
+      width: 50%;
+      margin-right: 25%;
+    }
+
+    .col-2 {
+      width: 49.25%;
+    }
+
+    .col-2.long {
+      width: 63.25%;
+    }
+
+    .col-2.short {
+      width: 35.25%;
+    }
+
+    .col-3 {
+      width: 32.333%;
+    }
+
+    .col-4 {
+      width: 23.875%;
+    }
+
+    .col-5 {
+      width: 18.8%;
+    }
+
+    /* BUTTONS */
+    button {
+      background: #009ED5;
+      padding: 13px 23px;
+      margin: 5px 0;
+      color: #ffffff;
+      border: 1px solid #009ED5;
+      -webkit-transition: all .25s ease;
+      -moz-transition: all .25s ease;
+      -o-transition: all .25s ease;
+      transition: all .25s ease;
+    }
+
+    button:hover {
+      background: transparent;
+      color: #009ED5;
+    }
+
+    button.pill {
+      border-radius: 500px;
+    }
+
+    button.br-5 {
+      border-radius: 5px;
+    }
+
+    button.br-4 {
+      border-radius: 4px;
+    }
+
+    button.br-3 {
+      border-radius: 3px;
+    }
+
+    button.br-2 {
+      border-radius: 2px;
+    }
+
+    .circle {
+      border-radius: 100%;
+    }
+
+    button.border-white {
+      border: 1px solid #ffffff;
+    }
+
+    button.border-white:hover {
+      background: transparent;
+      color: #009ED5;
+    }
+
+    button.border-black {
+      color: #2b2b2b;
+      border: 1px solid currentColor;
+    }
+
+    button.border-black:hover {
+      background: transparent;
+    }
+
+    button.open {
+      background: transparent;
+      color: #009ED5;
+      border-color: #009ED5;
+    }
+
+    button.open:hover {
+      background: #009ED5;
+      color: #ffffff;
+      border-color: #009ED5;
+    }
+
+    button.open.white {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    button.open.white:hover {
+      background: #ffffff;
+      color: #009ED5;
+      border-color: #ffffff;
+    }
+
+    button.open.black {
+      color: #2b2b2b;
+      border-color: #2b2b2b;
+    }
+
+    button.open.black:hover {
+      background: #2b2b2b;
+      color: #ffffff;
+      border-color: #2b2b2b;
+    }
+
+    button.secondary {
+      background: #262F38;
+      border-color: #262F38;
+    }
+
+    button.secondary:hover {
+      background: transparent;
+      color: #262F38;
+      border-color: #262F38;
+    }
+
+    button.secondary.border-white {
+      background: #262F38;
+    }
+
+    button.secondary.border-white:hover {
+      background: transparent;
+      color: #262F38;
+      border-color: #ffffff;
+    }
+
+    button.secondary.border-black {
+      border-color: #2b2b2b;
+    }
+
+    button.secondary.border-black:hover {
+      color: #2b2b2b;
+    }
+
+    button.secondary.open {
+      background: transparent;
+      color: #262F38;
+    }
+
+    button.secondary.open:hover {
+      background: #262F38;
+      color: #ffffff;
+      border-color: #262F38;
+    }
+
+    button.accent {
+      background: #404951;
+      border-color: #404951;
+    }
+
+    button.accent:hover {
+      background: transparent;
+      color: #404951;
+    }
+
+    button.accent.border-white {
+      border-color: #ffffff;
+    }
+
+    button.accent.border-black {
+      border-color: #2b2b2b;
+    }
+
+    button.accent.open {
+      background: transparent;
+      color: #404951;
+      border-color: #404951;
+    }
+
+    button.accent.open:hover {
+      background: #404951;
+      color: #ffffff;
+    }
+
+    button.button-white {
+      background: #ffffff;
+      border-color: #ffffff;
+    }
+
+    button.button-white:hover {
+      background: transparent;
+    }
+
+    button.button-white.primary {
+      color: #009ED5;
+    }
+
+    button.button-white.primary:hover {
+      border-color: #009ED5;
+    }
+
+    button.button-white.secondary {
+      color: #262F38;
+    }
+
+    button.button-white.secondary:hover {
+      border-color: #262F38;
+    }
+
+    button.button-white.accent {
+      color: #404951;
+    }
+
+    button.button-white.accent:hover {
+      border-color: #404951;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        width: 160px;
+        height: 50px;
+      }
+
+      .navigation {
+        display: none;
+      }
+
+      .col-1,
+      .col-2,
+      .col-2.long,
+      .col-3,
+      .col-4,
+      .col-5,
+      .col-1.centered-50,
+      .col-1.centered-60,
+      .col-1.centered-70,
+      .col-1.centered-80,
+      .col-1.centered-90 {
+        width: 100%;
+        float: none;
+      }
+
+      .col-2.short {
+        display: none;
+      }
+    }
+    @media (max-width: 500px) {
+      .inner-container {
+        width: 90%;
+      }
+    }
+    @media (max-width: 480px) {
+      button {
+        width: 100%;
+      }
+    }
+    /* ========= DEMO ONLY ========= */
+    body {
+      font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    [class^="col-"] {
+      text-align: center;
+      padding: 1vw;
+    }
+
+    .col-1 {
+      background: #009ED5;
+      color: #ffffff;
+    }
+
+    .col-2 {
+      background: #0078a2;
+      color: #ffffff;
+    }
+
+    .col-3 {
+      background: #00526f;
+      color: #ffffff;
+    }
+
+    .col-4 {
+      background: #002d3c;
+      color: #ffffff;
+    }
+
+    .col-5 {
+      background: #000709;
+      color: #ffffff;
+    }
+
+    .col-1.centered-50 {
+      background: #404951;
+    }
+
+    .col-1.centered-60 {
+      background: #292f35;
+    }
+
+    .col-1.centered-70 {
+      background: #131618;
+    }
+
+    .col-1.centered-80 {
+      background: black;
+    }
+
+    .col-1.centered-90 {
+      background: black;
+    }
+
+    nav {
+      text-transform: uppercase;
+      font-weight: 300;
+      z-index: 2;
+    }
+
+    .logo {
+      background: transparent url("img/logo-white.png") center no-repeat;
+      background-size: contain;
+    }
+
+    .download {
+      text-transform: uppercase;
+      font-weight: 400 !important;
+    }
+
+    header {
+      height: 13vw;
+      background: url("img/bg-header.jpg") center no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      text-align: center;
+      position: relative;
+    }
+
+    header .gradient {
+      width: 100vw;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: .45;
+      background-image: linear-gradient(to bottom right, #009ED5 0%, #262F38 50%, #404951 90%);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-content button {
+      max-width: 90%;
+    }
+
+    header h1 {
+      font-weight: 100;
+      font-size: 4vw;
+      color: #ffffff;
+    }
+
+    h2, h3, h4 {
+      font-weight: 300;
+    }
+
+    #color-section {
+      background: #e9e9e9;
+    }
+
+    #color-section .col-5 {
+      padding: 0;
+      background: transparent;
+    }
+
+    .color {
+      width: 100%;
+      height: 10vw;
+    }
+
+    .color.primary {
+      background: #009ED5;
+    }
+
+    .color.secondary {
+      background: #262F38;
+    }
+
+    .color.accent {
+      background: #404951;
+    }
+
+    .color.white {
+      background: #ffffff;
+    }
+
+    .color.black {
+      background: #2b2b2b;
+    }
+
+    #color-section input,
+    #slider-section input {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #009ED5;
+      outline: 0;
+      text-align: center;
+      color: #2b2b2b;
+      margin-bottom: 15px;
+      max-width: 100%;
+    }
+
+    #color-section button {
+      padding: 5px 13px;
+      margin-bottom: 13px;
+    }
+
+    #button-section {
+      background: #e9e9e9;
+      margin-top: 50px;
+      padding-bottom: 60px;
+    }
+
+    #typography-section {
+      padding-bottom: 60px;
+    }
+
+    #slider-section h2,
+    #accordion-section h2 {
+      margin: 15px 0;
+      display: inline-block;
+    }
+
+    #slider-section .slider-switcher,
+    #accordion-section .accordion-switcher {
+      display: inline-block;
+      position: relative;
+      top: -5px;
+      margin-left: 20px;
+    }
+
+    #slider-section button {
+      outline: 0;
+    }
+
+    #slider-section button[data="boxed"] {
+      margin-right: 25px;
+    }
+
+    #slider-section button:hover {
+      background: #009ED5;
+      color: #fff;
+      cursor: default;
+    }
+
+    #slider-section button.open:hover {
+      background: transparent;
+      color: #009ED5;
+      cursor: pointer;
+    }
+
+    #slider-section form {
+      display: inline-block;
+    }
+
+    #slider-section input {
+      width: 35px;
+      text-align: left;
+    }
+
+    .slider li {
+      color: #fff;
+      padding: 25px 1.15%;
+      box-sizing: border-box;
+    }
+
+    .slider li:first-child {
+      background: #009ED5;
+    }
+
+    .slider li:nth-child(2) {
+      background: #0078a2;
+    }
+
+    .slider li:nth-child(3) {
+      background: #006589;
+    }
+
+    .slider li:last-child {
+      background: #00526f;
+    }
+
+    #accordion-section {
+      margin: 65px 0;
+    }
+
+    .accordion-switcher {
+      margin-bottom: 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      background: #e9e9e9;
+    }
+
+    footer button {
+      margin-bottom: 15px;
+    }
+
+    .css {
+      margin-bottom: 15px;
+    }
+
+    .minify,
+    .unminify {
+      font-size: 1em;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.5);
+      padding: 5px;
+      color: #2b2b2b;
+    }
+
+    @media (max-width: 1100px) {
+      .navigation {
+        display: none;
+      }
+    }
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 50px 0 25px;
+      }
+
+      header h1 {
+        display: none;
+      }
+    }
+    @media (max-width: 600px) {
+      footer h4,
+      .cdn {
+        display: none;
+      }
+    }
+    @media (max-width: 450px) {
+      #slider-section .slider-switcher {
+        margin-left: 0;
+        display: block;
+      }
+
+      .slider-switcher span {
+        display: block;
+        margin-top: 20px;
+      }
+    }
+
+
+    </style>
+</head>
+<body>
+<nav>
+  <div class="inner-container">
+    <div class="logo">
+      <span class="srt">Recruiting.com Framework</span>
+    </div>
+    <ul class="navigation" hover-effect="border-bottom-from-top">
+      <li><a class="anchor" href="#grid-section">Grid</a></li>
+      <li><a class="anchor" href="#button-section">Buttons</a></li>
+      <li><a class="anchor" href="#typography-section">Typography</a></li>
+      <li><a class="anchor" href="#slider-section">Slider</a></li>
+      <li><a class="anchor" href="#accordion-section">Accordion</a></li>
+      <li><button class="download open white">Download</button></a></li>
+    </ul>
+    <button class="mobile-nav-trigger">
+      <span>toggle menu</span>
+    </button>
+  </div>
+</nav>
+
+<header>
+  <div class="header-content">
+    <h1>A framework for expedited workflow.</h1>
+    <button class="open white">Read the documentation</button>
+  </div>
+  <div class="gradient"></div>
+</header>
+
+<div id="color-section" class="wrapper">
+  <div class="inner-container">
+    <h2>Colors</h2>
+    <div class="col-5">
+      <div class="color primary"></div>
+      <p>Primary</p>
+      <form class="color-form" id="primary-form">
+        <input id="primary-color">
+        <button class="open" color-label="">Update</button>
+      </form>
+    </div>
+    <div class="col-5">
+      <div class="color secondary"></div>
+      <p>Secondary</p>
+      <form class="color-form" id="secondary-form">
+        <input id="secondary-color">
+        <button class="open" color-label="">Update</button>
+      </form>
+    </div>
+    <div class="col-5">
+      <div class="color accent"></div>
+      <p>Accent</p>
+      <form class="color-form" id="accent-form">
+        <input id="accent-color">
+        <button class="open" color-label="">Update</button>
+      </form>
+    </div>
+    <div class="col-5">
+      <div class="color white"></div>
+      <p>White</p>
+      <form class="color-form">
+        <input id="white-color">
+        <button class="open" color-label="">Update</button>
+      </form>
+    </div>
+    <div class="col-5">
+      <div class="color black"></div>
+      <p>Black</p>
+      <form class="color-form">
+        <input id="black-color">
+        <button class="open" color-label="">Update</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="grid-section" class="wrapper">
+  <div class="inner-container">
+    <h2>Grid System</h2>
+    <div class="row">
+      <div class="col-1">.col-1</div>
+    </div>
+    <div class="row">
+      <div class="col-2">.col-2</div>
+      <div class="col-2">.col-2</div>
+    </div>
+    <div class="row">
+      <div class="col-2 long">.col-2 .long</div>
+      <div class="col-2 short">.col-2 .short</div>
+    </div>
+    <div class="row">
+      <div class="col-3">.col-3</div>
+      <div class="col-3">.col-3</div>
+      <div class="col-3">.col-3</div>
+    </div>
+    <div class="row">
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
+    </div>
+    <div class="row">
+      <div class="col-5">.col-5</div>
+      <div class="col-5">.col-5</div>
+      <div class="col-5">.col-5</div>
+      <div class="col-5">.col-5</div>
+      <div class="col-5">.col-5</div>
+    </div>
+    <div class="row">
+      <div class="col-1 centered-90">.col-1 .centered-90</div>
+    </div>
+    <div class="row">
+      <div class="col-1 centered-80">.col-1 .centered-80</div>
+    </div>
+    <div class="row">
+      <div class="col-1 centered-70">.col-1 .centered-70</div>
+    </div>
+    <div class="row">
+      <div class="col-1 centered-60">.col-1 .centered-60</div>
+    </div>
+    <div class="row">
+      <div class="col-1 centered-50">.col-1 .centered-50</div>
+    </div>
+  </div>
+</div>
+
+<div id="button-section" class="wrapper">
+  <div class="inner-container">
+    <h2>Buttons</h2>
+     <div class="row">
+       <button>Primary button</button>
+       <button class="border-white">Border-white button</button>
+       <button class="border-black">Border-black button</button>
+       <button class="open">Open button</button>
+    </div>
+    <div class="row">
+       <button class="secondary">Secondary button</button>
+       <button class="secondary border-white">Border-white button</button>
+       <button class="secondary border-black">Border-black button</button>
+       <button class="secondary open">Open button</button>
+    </div>
+    <div class="row">
+       <button class="accent">Accent button</button>
+       <button class="accent border-white">Border-white button</button>
+       <button class="accent border-black">Border-black button</button>
+       <button class="accent open">Open button</button>
+    </div>
+    <div class="row">
+       <button class="button-white primary">Primary button</button>
+       <button class="button-white secondary">Secondary button</button>
+       <button class="button-white accent">Accent button</button>
+    </div>
+    <div class="row">
+      <button class="open white">Open button white</button>
+      <button class="open black">Open button black</button>
+    </div>
+  </div>
+</div>
+
+<div id="typography-section" class="wrapper">
+  <div class="inner-container">
+    <h2>Typography</h2>
+     <div class="row">
+       <p class="h1-style">This is a level one headline</p>
+       <p class="h2-style">This is a level two headline</p>
+       <p class="h3-style">This is a level three headline</p>
+       <p class="h4-style">This is a level four headline</p>
+       <p>This is what a paragraph will look like. And <a href="#">this right here</a> is a link inside of paragraph text. That's a nice link.</p>
+       <a href="">This is a link outside of paragraph text.</a>
+    </div>
+  </div>
+</div>
+
+<div id="slider-section">
+  <div class="inner-container">
+  <h2>Slider</h2>
+    <div class="slider-switcher">
+      <button data="full-width">Full Width</button> <button class="open" data="boxed">Boxed</button>
+      <a href="" data="on" class="active-link">Timer on</a> | <a href="" data="off">Timer off</a> &nbsp;&nbsp;&nbsp;&nbsp; <span>Timer speed: <form><input type="text" placeholder="3.5"></form> seconds</span>
+    </div>
+  </div>
+  <div class="slider arrows nav">
+    <ul>
+      <li>Slide 1</li>
+      <li>Slide 2</li>
+      <li>Slide 3</li>
+      <li>Slide 4</li>
+    </ul>
+  </div>
+</div>
+
+
+<div id="accordion-section">
+  <div class="inner-container">
+    <h2>Accordion</h2>
+    <div class="accordion-switcher">
+      <a href="" data="vertical" class="active-link">Vertical</a> | <a href="" data="horizontal">Horizontal</a>
+    </div>
+
+    <div class="accordion">
+      <li class="open">
+        <a>Item 1</a>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor.</p>
+      </li>
+      <li>
+        <a>Item 2</a>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor.</p>
+      </li>
+      <li>
+        <a>Item 3</a>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor.</p>
+      </li>
+      <li>
+        <a>Item 4</a>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor.</p>
+      </li>
+    </div>
+
+  </div>
+</div>
+
+
+<footer>
+  <div class="inner-container">
+  <a href="#"><button>Download framework</button></a>
+  <h4>Use hosted files from CDN:</h4>
+  <div class="cdn">
+    <div class="css">
+      <span>Hosted <span class="is-minified">Unminified</span> CSS: (<a class="minify" href="">minify</a>)&nbsp;</span> <code>unminified CSS link here</code>
+    </div>
+    <div class="js">
+      <span>Hosted <span class="is-minified">Unminified</span> JS: (<a class="minify" href="">minify</a>)&nbsp;</span> <code>unminified JS link here</code>
+    </div>
+  </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
